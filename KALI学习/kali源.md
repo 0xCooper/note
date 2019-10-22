@@ -1,4 +1,4 @@
-\#kali官方源
+#kali官方源
 
 ​    deb http://http.kali.org/kali kali-rolling main non-free contrib
 
