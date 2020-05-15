@@ -81,7 +81,7 @@ Text objects selection
     Ctrl+w c：关闭当前窗口
     :sp file1：上下分割，打开一个文件
     :vsp file1：左右分割，打开一个文件
-    Ctrl+w jkhl：在多个分屏中移动光标
+    Ctrl+w jkhl：在多个分屏中：移动光标
 
 范例
 

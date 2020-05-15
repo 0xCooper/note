@@ -84,6 +84,12 @@ $$
 
 #### 数学表达式
 
+$$
+
+$$
+
+
+
 输入`$$`，然后按“回车”键，如下：
 KaTeX parse error: Expected & or \\ or \cr or \end at position 90: …} & \mathbf{k} \̲ ̲\frac{\partial …
 
