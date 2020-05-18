@@ -1,6 +1,6 @@
 用相对路径表示图片，方便上传
 
-![](.\img\markdown1.PNG)
+![](..\img\markdown1.PNG)
 
 这是在java里的一处引用图片的url
 而图片存在note下的img

@@ -40,6 +40,6 @@ https://download3.vmware.com/software/wkst/file/VMware-workstation-full-12.5.9-7
 VMware Workstation 10.0.7 Build 2844087
 https://download3.vmware.com/software/wkst/file/VMware-workstation-full-10.0.7-2844087.exe
 
-![1588238342828](../img/1588238342828.png)
+![1588238342828](../../img/1588238342828.png)
 
 ![1588238365128](F:/1  1-笔记markdown/img/1588238365128.png)
