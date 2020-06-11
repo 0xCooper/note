@@ -1,4 +1,4 @@
-## 安装 酷Q on Docker
+## 安装 酷Q on Dockers
 
 1.下载 酷Q Docker 镜像：
 

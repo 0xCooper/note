@@ -14,13 +14,13 @@
 
 准备：你的Linux服务器上已经安装了docker
 
-## 1 安装镜像
+### 1安装镜像
 
 ```
 docker pull alfg/nginx-rtmp
 ```
 
-## 2运行容器
+### 2运行容器
 
 ```
 #直接运行
@@ -39,7 +39,9 @@ rtmp://服务器ip:1935/stream/自定义名称
 
 第二种：ffmpeg推送本地视频为直播流
 
+```
 ffmpeg -re -i /home/holle.flv -vcodec copy -acodec aac -ar 44100 -f flv rtmp://192.168.1.201:1935/stream/example
+```
 
 
 
@@ -52,7 +54,7 @@ ffmpeg -re -i /home/holle.flv -vcodec copy -acodec aac -ar 44100 -f flv rtmp://1
 ```
 #rtmp在线播放
 http://www.cutv.com/demo/live_test.swf
-#上面那个好像在我测试之后就不管用了
+#上面那个好像在我测试后第二天就不管用了，emmm
 http://www.ossrs.net/players/srs_player.html
 ```
 
@@ -74,7 +76,7 @@ http://www.ossrs.net/players/srs_player.html
 （4）RTMP一般在 TCP 1个通道上传输命令和数据。
 ```
 
-参考博客：
+## 参考博客：
 
 [利用docker搭建rtmp直播流](https://blog.csdn.net/lipei1220/article/details/80234281?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 
@@ -84,13 +86,9 @@ http://www.ossrs.net/players/srs_player.html
 
 [快速搭建自己的直播服务器，完成属于你的直播服务](https://blog.csdn.net/wjwj1203/article/details/104608243)
 
-```
-#github代下载服务
-https://g.widora.cn/
-http://gg.widyun.com/
-```
 
-问题，如何将这个网页放在html上
+
+**问题**，如何将这个rtmp流放在html上
 
 这个好像可以在服务器上利用videoJs实现
 
@@ -152,13 +150,7 @@ rtmp {
 
 
 
-
-
-
-
-推流测试地址
-
-
+## 推流测试地址
 
 免费开放本人服务器
 
@@ -169,10 +161,25 @@ rtmp {
 好像你也可以向那些开放测试的rtmp推流
 
 
-比如上面那个湖蓝卫视测试地址去掉后面那个密钥。不就是推流地址（手动狗头🐕）
+比如上面那个湖蓝卫视测试地址去掉后面那个密钥。不 就是推流地址（手动狗头🐕）
 
 ```
 rtmp://58.200.131.2:1935/livetv/
 ```
 
-不过我试了下好像能推流但是播放不了！
+这好像是`rtmp`直播的漏洞
+[北广传媒RTMP流媒体服务器漏洞](https://www.cnblogs.com/leixiaohua1020/p/3902238.html)  早在13年雷神博客中提到
+（当然主要原因还是是config配置时没有对ip地址进行限定）
+
+## 软件推荐
+
+[直播神探](https://www.rtmpsniffer.com/) 看起来这个软件很不错，可以分析出直播时评的rtmp流
+
+这个软件好像使用了[winpcap](http://www.ferrisxu.com/WinPcap/html/index.html) 看来本质是个抓包软件，对这个不是很懂，但是找了些资料
+
+有时间也尝试下学习开发抓包软件[基于winpcap的抓包软件设计](https://wenku.baidu.com/view/2c31157002020740be1e9b81.html)
+
+好家伙，有了rtmp流不就自    己模仿个直播网站了嘛？不过前端技术怎么实现还是一个问题！
+
+<iframe src="https://www.rtmpsniffer.com/" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=450px  height=400px> </iframe>
+

@@ -105,48 +105,6 @@ p{color:red!important;}
 
 
 ```
-css布局模型
-1.流动模型 分为内联元素（从左向右）与  块状元素 （从上向下）
-
-2.浮动模型
-   div {
-        border: 2px red solid;
-        width: 200px;
-        height: 400px;
-        float:right/left/;
-    }
-    实现两个模块一左一右
-    #div1{float:left;}
-    #div2{float:right;}
-```
-
-![](http://img.mukewang.com/540e62c60001c56a06760417.jpg)
-
-```
-3.层模型
-层模型有三种形式：
-1、绝对定位(position: absolute)
-代码可以实现div元素相对于浏览器窗口向右移动100px，向下移动100px。
-2、相对定位(position: relative)
-代码实现相对于以前位置移动，但是在代码中之前的位置任然被占据了，也不会为后面的文本让步
-3、固定定位(position: fixed)
-代码可以实现相对于浏览器视图向右移动100px，向下移动50px
-
-#div1 {
-        width: 200px;
-        height: 200px;
-        border: 2px red solid;
-        position:absolute/relative/fixed;
-        left:100px;
-        top:50px;
-    }
-```
-
-1.绝对定位
-
-![1588614048894](../img/1588614048894.png)
-
-```
 1.text-indent为文本添加首行缩进
 p{text-indent:2em;}
 2.使用line-height为文字设置行间间距
@@ -165,7 +123,7 @@ p {display: none;}
 
 ```
 
-font设置
+#### font设置
 
 ```
 1.body{font-family:"宋体";}
@@ -255,7 +213,7 @@ a:active {color: #0000FF}	/* 选定的链接 */
 
 
 
-list-style-type:none - 删除圆点。导航栏不需要列表项标记。
+
 ```
 
 ```
@@ -305,6 +263,8 @@ background-color:#cc0000;
 </html>
 
 ```
+
+#### 表单中下拉菜单
 
 ```
 下拉菜单
@@ -360,6 +320,154 @@ background-color:#cc0000;
 ```
 上面是单选框
 ```
+
+### CSS优化
+
+#### 实现阴影的慢慢浮现
+
+```
+div{
+    width:200px;
+    height:200px;
+    box-shadow: 2 px 2px 2px  2px  rgba(0,0,0,0.4);
+    transition:all is;
+}
+```
+
+#### 去掉链接下划线
+
+```
+a{
+    text-decoration:none;去掉下划线
+}
+```
+
+#### 删除列表前的圆点
+
+```
+list-style-type:none - 删除圆点。导航栏不需要列表项标记。
+```
+
+
+
+
+
+
+
+### css布局模型
+
+#### 浮动模型的问题
+
+浮动的在上层，但是是基于之前位置的！
+
+
+
+
+
+```
+css布局模型
+1.流动模型 分为内联元素（从左向右）与  块状元素 （从上向下）
+
+2.浮动模型
+   div {
+        border: 2px red solid;
+        width: 200px;
+        height: 400px;
+        float:right/left/;
+    }
+    实现两个模块一左一右
+    #div1{float:left;}
+    #div2{float:right;}
+```
+
+![](http://img.mukewang.com/540e62c60001c56a06760417.jpg)
+
+```
+3.层模型
+层模型有三种形式：
+1、绝对定位(position: absolute)
+代码可以实现div元素相对于浏览器窗口向右移动100px，向下移动100px。
+2、相对定位(position: relative)
+代码实现相对于以前位置移动，但是在代码中之前的位置任然被占据了，也不会为后面的文本让步
+3、固定定位(position: fixed)
+代码可以实现相对于浏览器视图向右移动100px，向下移动50px
+
+#div1 {
+        width: 200px;
+        height: 200px;
+        border: 2px red solid;
+        position:absolute/relative/fixed;
+        left:100px;
+        top:50px;
+    }
+```
+
+1.绝对定位
+
+![1588614048894](../../../Vs%20Workstation/note/img/1588614048894.png)
+
+
+
+
+
+
+
+### flex弹性盒子模型
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>flex布局</title>
+    <style type="text/css">
+    .box {
+        background: blue;
+        display: flex;
+    }
+
+    .box div {
+        width: 200px;
+        height: 200px;
+    }
+
+    .box1 {
+        background: red;
+    }
+
+    .box2 {
+        background: orange;
+    }
+
+    .box3 {
+        background: green;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>
+```
+
+```
+   .box {
+        background: blue;
+        display: flex;
+         justify-content: flex-end;
+    }
+    justify-content: flex-start | flex-end | center | space-between | space-around;
+```
+
+
+
+
+
+
 
 
 
