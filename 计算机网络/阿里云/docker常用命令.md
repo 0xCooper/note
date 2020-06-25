@@ -1,3 +1,16 @@
+```shell
+docker启动命令,docker重启命令,docker关闭命令
+
+启动        systemctl start docker
+守护进程重启   sudo systemctl daemon-reload
+重启docker服务   systemctl restart  docker
+重启docker服务  sudo service docker restart
+关闭docker service docker stop 
+关闭docker systemctl stop docker
+```
+
+
+
 ```
 docker ps 当前正在运行的容器名称  参数 -a 查看所有容器  -n 10查看最近10创建的镜像
 docker images 列出当前储存在机器中的镜像

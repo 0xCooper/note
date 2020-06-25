@@ -8,5 +8,5 @@ static
 
 
 
-![java1](../..\img\java1.PNG)
+![java1](../../img\java1.PNG)
 

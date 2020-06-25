@@ -11,7 +11,29 @@ http://192.168.220.139:8080/
 
 <https://www.daocloud.io/>
 
-daocloud
+daocloud   在线快速部署docker镜像
+也可以拉去网易镜像中心的镜像
+
+我看的教程是imooc上的一个老师讲的docker
+
+
+
+```shell
+docker启动命令,docker重启命令,docker关闭命令
+
+启动        systemctl start docker
+守护进程重启   sudo systemctl daemon-reload
+重启docker服务   systemctl restart  docker
+重启docker服务  sudo service docker restart
+关闭docker service docker stop 
+关闭docker systemctl stop docker
+```
+
+
+
+
+
+
 
 ```
 docker 部署nignx后
