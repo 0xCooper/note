@@ -1,0 +1,43 @@
+```js
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+</head>
+<body>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+您的浏览器不支持 HTML5 canvas 标签。
+</canvas>
+
+<script>
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.fillStyle="#FF0000";
+ctx.fillRect(0,0,150,75);
+
+</script>
+
+</body>
+</html>
+```
+
+
+
+
+
+```
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id : 5566,
+     a : function() 
+	{
+       return this.firstName + " " + this.lastName;
+    }
+};
+document.getElementById("demo").innerHTML = person.a();
+```
+
