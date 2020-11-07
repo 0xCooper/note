@@ -26,7 +26,6 @@ Linux重启网卡的三种方法：
 \# ifdown eth0
 \# ifup eth0
 
-
 三、ifconfig
 \# ifconfig eth0 down
 \# ifconfig eth0 up

@@ -1,3 +1,63 @@
+#### 导出表
+
+导出表的结构体
+
+前四个字节是地址，后四个字节是大小
+
+![1604495848393](../img/1604495848393.png)
+
+
+
+
+
+
+
+#### 扩大节
+
+![1604481939060](../img/1604481939060.png)
+
+
+
+
+
+
+
+
+
+#### PE头
+
+
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201025123931.png)
+
+
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201025170708.png)
+
+文件属性
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201025171131.png)
+
+
+
+
+
+#### 扩展PE头
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201029170846.png)
+
+
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201029170959.png)
+
+
+
+
+
+
+
+
+
 1.可执行文件
 ![1599736710063](../img/1599736710063.png)
 
@@ -29,6 +89,34 @@
 
 #### 节表
 
+一个节表是40个字节
+
+size of rawdata 文件中对齐的大小
+
+```
+1、Name	8个字节 一般情况下是以"\0"结尾的ASCII吗字符串来标识的名称，内容可以自定义.									
+										
+注意：该名称并不遵守必须以"\0"结尾的规律，如果不是以"\0"结尾，系统会截取8个字节的长度进行处理.										
+										
+2、Misc  双字 是该节在没有对齐前的真实尺寸,该值可以不准确。										
+										
+3、VirtualAddress 节区在内存中的偏移地址。加上ImageBase才是在内存中的真正地址.										
+										
+4、SizeOfRawData  节在文件中对齐后的尺寸.										
+										
+5、PointerToRawData 节区在文件中的偏移.										
+										
+6、PointerToRelocations 在obj文件中使用 对exe无意义										
+										
+7、PointerToLinenumbers 行号表的位置 调试的时候使用										
+										
+8、NumberOfRelocations 在obj文件中使用  对exe无意义										
+										
+9、NumberOfLinenumbers 行号表中行号的数量 调试的时候使用										
+										
+10、Characteristics 节的属性	
+```
+
 ![1599742715082](../img/1599742715082.png)
 
 
@@ -43,3 +131,12 @@
 
 内存对齐
 
+#### 新增节的步骤
+
+![1604156488313](../img/1604156488313.png)
+
+#### shellcode
+
+![1604408265937](../img/1604408265937.png)
+
+#### 合并节
