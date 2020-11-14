@@ -9,9 +9,16 @@ docker启动命令,docker重启命令,docker关闭命令
 关闭docker systemctl stop docker
 ```
 
-
-
+```bash
+docker svae [ID] > /home/unbuntu-save-time.tar #导出镜像
+docker load   <  /home/myubuntu-save-time.tar #加载导入镜像
+ docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）#命名
+ docker tag <ID>  ubuntu:latest 
 ```
+
+
+
+```bash
 docker ps 当前正在运行的容器名称  参数 -a 查看所有容器  -n 10查看最近10创建的镜像
 docker images 列出当前储存在机器中的镜像
 docker pull xxx 下载镜像
@@ -37,6 +44,7 @@ docker start #启动一个已经停止的容器
 docker stop <ID>  #停止一个已容器
 docker restart <ID>  #重启一个容器
 docker rm -f <ID> # 删除容器
+docker rmi <ID>  #删除镜像
 docker attach <ID> #进入某个容器（使用exit推出后容器也会跟着推出）
  docker exec -ti <ID> #启动一个伪终端以交互式的方式进入某个容器（使用exit退出后容器不停止运行）
   docker port mymysql#列出指定端口的映射

@@ -1,3 +1,58 @@
+
+
+
+
+#### 链接库
+
+动态链接库与静态链接库
+
+```bash
+静态库制作步骤##################
+gcc -c add.c -o add.o
+使用ar工具
+ar rcs lib库名.a add.o div.o
+#静态库中添加这几个函数
+add(x,y)
+div(x,y)
+链接阶段出错没有行号提示
+gcc test.c lib库名.a -o test
+#讲库函数编译到执行文件中
+动态库制作######################
+objdump -dS test 反汇编
+制作动态库时生成的.o文件与静态库有差别
+1.gcc -c add.c -o add.o -fPIC(生成与位置无关的代码)
+
+使用gcc -shared的选项来制作动态库
+2.gcc -shared -o lib库名.so add.o sub.o div.o
+3.编译可执行文件时指定使用的动态库
+4.指定所使用的动态库 -l使用库名 -L指定库路径
+gcc test.c -o a.out -lmymath  -L ./lib
+
+###设置动态链接库的环境变量###
+LD_LIBRARY_PATH=./lib
+export LD_LIBRARY_PATH=./lib
+
+
+
+
+```
+
+
+
+```bash
+头文件首位  mymath.h
+#ifndef _MYMATH_H
+#define _MYMATH_H
+int add(int ,int);
+int sub(int ,int);
+int div1(int,int);
+#endif
+文件中
+#include "mymath.h"
+```
+
+
+
 sizeof与strlen
 
 ```
@@ -174,7 +229,82 @@ void main()
 
 ##### lseek()函数
 
+设置文件的读写位置
 
+```
+ lseek(fd,o,SEK_SET); #设置为起始位置
+ 
+```
+
+### 共享内存映射
+
+![](https://gitee.com/muyinchuan/images/raw/master/img/20201109154200.png)
+
+
+
+```
+mmap (void* addr,size_t length ,int prot ,int flags ,int fd ,off_t offset)
+创建共享内存映射
+addr NULL 系统自动分配
+length 共享内存大小（<=文件的大小）
+prot 共享内存区的读写属性  PROT_EXEC 执行   PROT_READ|PROT_WRITE  		读写
+flags 标注共享内存的共享属性  MAP_SHARED/MAP_PRIVATE
+fd    用于创建共享内存应映区的文件的文件描述符
+offset 偏移位置
+返回值:
+	成功:成功返回映射区的首地址
+	失败:MAP_FAILED  返回一个-1的void*强转
+
+
+```
+
+### 信号
+
+简单，不能携带大量信息，满足条件才能发送
+信号是软件层面的中断（时钟中断才是硬件层面的中断）
+
+所有的进程收到的信号都是由内核负责发送的
+
+产生信号的五种方式
+
+```
+1.按键产生  ctrl+c ctrl+z
+2.系统调用  kill ,ralse,abort
+3.软件条件的产生  alarm
+4.硬件
+5.命令 kill
+```
+
+```
+递达与未决
+信号处理方式：1.执行 2.忽略3.捕捉 
+```
+
+
+
+
+
+
+
+### 守护进程
+
+daemon进程 ，通常在操作系统后台运行，一半不与用户直接交互，周期的等待某一个事情发生 
+通常以d结尾的命名方式
+
+```
+1.创建子进程，终止父进程
+fork() 
+2.在子进程中创建会话
+setsid()
+3，改变当前目录
+chdir()
+4.重设文件权限掩码
+umask
+5.关闭或者重定向文件描述符
+close(fd)
+6.开始执行守护进程核心工作守护进程退出处理程序模型
+
+```
 
 
 
@@ -560,18 +690,23 @@ total 12
 ###  线程
 
 - LWP：light weight process **轻量级的进程**，本质仍是**进程**(在Linux环境下)
-
 - 进程：独立地址空间，拥有PCB
-
 - 线程：也有PCB，但没有独立的地址空间(共享)
-
 - 区别：在于是否共享地址空间。 独居(进程)；合租(线程)。
-
 - Linux下： 线程：**最小的执行单位，调度的基本单位。**
-
 - 进程：**最小分配资源单位，可看成是只有一个线程的进程**
 
-  
+### 线程锁
+
+给占有资源的那个进程加锁，保证线程的顺序执行，资源不被抢占
+
+try锁 
+
+尝试加锁  ，加不了返回错误信息
+
+读写锁1
+
+![1605011616021](../../../img/1605011616021.png)
 
 #### pthread
 
@@ -693,7 +828,84 @@ ____
 
 ### socket编程
 
-**头文件#include<sys/socket.h>**
+
+
+网络数据采用大端存储模式，而计算机采用小端存储模式
+
+### 字节序转换
+
+```
+#include<arpa/inet.h>
+
+uint32_t htonl(uint32_t hostlong);
+uint16_t htons(uint16_t hostshort);
+uint32_t ntohl(uint32_t netlong);
+uint16_t ntohs(uint16_t netshort);
+```
+
+```c
+inet_pton()  #直接将字符串转为网咯字节序
+inet_ntop()  #将网络字节序直接转化为点分十进制字符串
+
+int inet_pton(int af,const char *src,void *dst)
+af: AF_INET(ipv4)  AF_inet6
+src:192.168.1.1
+dst:
+
+const char *inet_ntop(int af,const void *src, char *dst ,socket_t size );
+
+
+struct sockaddr  //地址结构体
+    
+struct sockaddr_in addr;
+bind(   ,(struct sockaddr *)&addr);
+
+```
+
+listen() 同时允许多少个客户端建立连接
+
+![1605066189451](../../../img/1605066189451.png)
+
+sockaddr_in 结构体
+
+![1605066327918](../../../img/1605066327918.png)
+
+```
+struct sockaddr_in{
+sa_family_t sin_family
+in_port_t sin_port
+struct in_addr sin_addr
+}
+struct in_addr{
+    uint32_t      s_addr;
+}
+```
+
+inet _pton的源码
+
+![1605066527918](../../../img/1605066527918.png)
+
+
+
+![1605067516939](../../../img/1605067516939.png)
+
+![1605069744097](../../../img/1605069744097.png)
+
+
+
+
+
+![1605069872296](../../../img/1605069872296.png)
+
+
+
+
+
+
+
+建立三次握手的连接总和
+
+头文件#include<sys/socket.h>**
 
 #### 1.socket()
 

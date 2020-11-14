@@ -1,3 +1,16 @@
+```
+sudo adduser admin  #创建用户
+sudo deluser admin  #删除用户
+vi /etc/passwd  
+sudo delgroup g88 #删除用户组
+grep  #查找文件内容
+ps -aux #u 进程所有者 x没有控制终端
+size 
+file #查看文件类型
+```
+
+
+
 安装codeblock
 
 ```
