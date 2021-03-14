@@ -1,0 +1,49 @@
+owasp top 10 十大最严重的web风险
+
+openVAS是开源的漏洞扫描器
+
+```
+下载镜像后是·一个镜像
+liunx 其他版本
+```
+
+web工作机制
+
+```
+本地缓存 ——> host IP/arp --> dns-->ip-->网关 到达对方主机  访问端口  三次握手 建立连接  http响应
+```
+
+```
+web容器 提供http服务  常见的web容器 Apache IIS  Nginx(具有反向代理，负载均衡)
+搭配一种脚本语言 实现用户交互
+```
+
+```
+数据库  sql mysql access  oracal
+```
+
+```
+URL编码 %23 为 #   20%为空格       &编码为%26     BP中的decoder可以实现  +代替空格
+url为十六进制   %+Ascll码值
+```
+
+```
+浏览器挂代理实现网络监听   ip代理实现IP隐藏
+```
+
+```
+请求报文分析请求头  get请求 post 请求
+```
+
+```
+inurl:
+index of 
+站长工具
+网站的目录结构
+robots.txt文件
+phpmyadmin
+phpinfo
+密码绕过
+
+```
+

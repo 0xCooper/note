@@ -1,3 +1,26 @@
+ffmpeg下载
+打开你想要下载的视频，并按下F12，
+
+在控制台中点击Network，并播放一小段视频。
+
+在过滤器一栏中输入m4s，找到两个名字很像的链接。
+
+![img](../img/0fb1fc5eaea8fb92c2cd2f884135e700b8dceffd.png@1320w_704h.webp)红圈中的链接即是
+
+右键链接，复制-复制链接。
+
+在命令行中输入：
+
+ffmpeg -i "链接" -i "另外一个链接" E:\输出.mp4
+
+（引号不要删掉，储存位置随意改）
+
+Enter！！
+
+![img](../img/4adb9255ada5b97061e610b682b8636764fe50ed.png)
+
+等待音视频流合并完成，你的视频就下载完了
+
 下载工具的网页或视频链接
 
 https://www.52pojie.cn/forum.php?mod=viewthread&tid=926824&page=1&authorid=69218
