@@ -1,0 +1,5 @@
+属于web服务器，用于开启web接口与路由
+Tomcat其实是Web服务器和Servlet容器的结合体
+
+web服务就是http服务器
+而Servlet是接口，那么tomcat就是
